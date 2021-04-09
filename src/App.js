@@ -1,10 +1,12 @@
-import logo from './logo.svg';
- import './App.css';
-import Selected from "./components/Select"
+import {Fragment} from "react-dom";
+import './App.css';
+import SelectForm from "./components/Select";
+import InfoRate from "./components/InfoRate";
+
 
 function App() {
   return (
-    <Selected/>
+        <SelectForm/>
   );
 }
 
