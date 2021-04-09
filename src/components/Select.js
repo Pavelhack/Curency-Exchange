@@ -3,18 +3,23 @@ import { Select } from 'antd';
 import InfoRate from './InfoRate';
 
 const SelectForm = () =>{ 
+
     const { Option } = Select;
 
-    const [currencies, setCurrencies] = useState(0)
+    const [currencies, setCurrencies] = useState(0);
 
-    const [from, setFromCurrencies] = useState()
+    const [from, setFromCurrencies] = useState();
+
+    const [usd, setUSD] = useState();
+
+    const [eur, setEUR] = useState();
 
     let urlCurrencies = "https://free.currconv.com/api/v7/currencies?apiKey=cc1c42623e7c44a5dccf"
     
     let defaultCurrencies = `https://free.currconv.com/api/v7/convert?apiKey=do-not-use-this-key&q=${from}_USD,${from}_EUR`
     
-    let usd, eur;
-
+    let BYNCurrencies = `https://free.currconv.com/api/v7/convert?apiKey=do-not-use-this-key&q=BYN_USD,BYN_EUR`
+    
     const arrCurrency = [];
 
     for (let i = 0; i < currencies.length-1; i++) {
@@ -30,23 +35,23 @@ const SelectForm = () =>{
                     let result = await response.json();
                     for(let i in result.results){arrCurrency.push(i)} 
                     setCurrencies(arrCurrency);
-                    setFromCurrencies("BYN")
+
+                    let res = await fetch(BYNCurrencies);
+                    let resultFrom = await res.json();
+                    setUSD(resultFrom.results["BYN_USD"].val);
+                    setEUR(resultFrom.results["BYN_EUR"].val);
+
+                    setFromCurrencies("BYN");
                 })();
-            }if(from !== "BYN"){
+
+            }
+            
+            if(from !== "BYN" && from !== undefined){
                 (async () =>{
                     let res = await fetch(defaultCurrencies);
                     let resultFrom = await res.json();
-                    
-                    for(let i in resultFrom.results){
-                        console.log(resultFrom.results[i])
-
-                        console.log(resultFrom.results[i].val)
-                    }
-
-                    // 
-                    usd = resultFrom.results[`${from}_USD`].val
-                    eur = resultFrom.results[`${from}_EUR`].val
-                    console.log(usd, eur)
+                    setUSD(resultFrom.results[`${from}_USD`].val);
+                    setEUR(resultFrom.results[`${from}_EUR`].val);
                 })()
             }
         }
@@ -54,7 +59,6 @@ const SelectForm = () =>{
     
 
     function onChange(value) {
-    console.log(`selected ${value}`);
     setFromCurrencies(`${value}`)
     }
 
