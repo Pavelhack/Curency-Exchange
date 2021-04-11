@@ -1,6 +1,6 @@
-/* import SelectForm from "./components/Select";
-
-const InfoRate = () =>{
+export const InfoRate = () =>{
+    return(
+        <div>block InfoRate</div>
+    )
     
 }
-export default InfoRate; */

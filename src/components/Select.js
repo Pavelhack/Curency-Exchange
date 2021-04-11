@@ -1,8 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { Select } from 'antd';
-import InfoRate from './InfoRate';
 
-const SelectForm = () =>{ 
+export const SelectForm = () =>{ 
 
     const { Option } = Select;
 
@@ -65,7 +64,7 @@ const SelectForm = () =>{
 return(
     <div>
         <div className = "info">
-            <h1>info for {from}</h1>
+            <h1>current currency {from}</h1>
             <div className = "USD">USD > {from} = {usd}</div>
             <div className = "EUR">EUR > {from} = {eur}</div>
         </div>
@@ -82,5 +81,3 @@ return(
   
 );
 }
-
-export default SelectForm;
