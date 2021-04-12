@@ -1,35 +1,34 @@
 import './App.css';
-import { SelectForm } from "./components/Select";
-import { InfoRate } from "./components/InfoRate";
-import { Header } from "./components/Header";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import React, {useState} from "react"
+import {SelectForm} from "./components/Select";
+import {InfoRate} from "./components/InfoRate";
+import {Header} from "./components/Header";
+import {Route, Switch} from "react-router-dom"
 
 
 export const App = () => {
-  return (
-    <Router>
-      <div className="App">
-        <Header/>
-      <div className="content">
 
-        <Switch>
+    const [currencyDefault, setCurrencyDefault] = useState("BYN");
+    const [currencyFrom, setCurrencyFrom] = useState("USD");
+    const [currencyTo, setCurrencyTo] = useState("BYN");
 
-            <Route exact path="/">
-              <SelectForm />
-            </Route>
+    return (
+        <div className="App">
+            <Header/>
+            <div className="content">
 
-            <Route path="/InfoRate" >
-              <InfoRate />
-            </Route>
+                <Switch>
 
-        </Switch>
-      </div>
+                    <Route exact path="/">
+                        <SelectForm currencyDefault={currencyDefault} setCurrencyDefault = {setCurrencyDefault}/>
+                    </Route>
 
-      </div>
-    </Router>
-  );
+                    <Route path="/InfoRate">
+                        <InfoRate currencyFrom = {currencyFrom} setCurrencyFrom={setCurrencyFrom} currencyTo = {currencyTo} setCurrencyTo={setCurrencyTo}/>
+                    </Route>
+
+                </Switch>
+            </div>
+        </div>
+    );
 }
