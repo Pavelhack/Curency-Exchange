@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Input} from './Input'
+import {InputValue} from './Input'
 
 export const SelectForm = ({currencyDefault , setCurrencyDefault}) =>{
 
@@ -34,7 +34,7 @@ return(
             <div className = "USD">USD > {currencyDefault} = {usd}</div>
             <div className = "EUR">EUR > {currencyDefault} = {eur}</div>
         </div>
-        <Input setCurrency = {setCurrencyDefault}/>
+        <InputValue setCurrency = {setCurrencyDefault}/>
     </div>
 
 );

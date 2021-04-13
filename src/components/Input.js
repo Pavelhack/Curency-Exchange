@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Select} from 'antd';
 
-export const Input = ({ setCurrency }) => {
+export const InputValue = ({ setCurrency }) => {
 
     const [currencies, setCurrencies] = useState(0);
 
@@ -17,7 +17,7 @@ export const Input = ({ setCurrency }) => {
 
     useEffect(
         () => {
-            if (currencies == 0) {
+            if (currencies === 0) {
                 (async () => {
                     let response = await fetch(urlCurrencies);
                     let result = await response.json();
@@ -37,8 +37,11 @@ export const Input = ({ setCurrency }) => {
     return (
         <Select
             showSearch
-            style={{width: 200}}
-            placeholder="Select a person"
+            style={{
+                width: 80,
+                margin: '0 8px',
+            }}
+            placeholder="Select a currency"
             optionFilterProp="children"
             onChange={onChange}
         >
