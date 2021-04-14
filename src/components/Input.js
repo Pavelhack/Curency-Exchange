@@ -5,6 +5,8 @@ export const InputValue = ({ setCurrency }) => {
 
     const [currencies, setCurrencies] = useState(0);
 
+    const [inputValue, setValue] = useState('currency')
+
     let urlCurrencies = "https://free.currconv.com/api/v7/currencies?apiKey=cc1c42623e7c44a5dccf"
 
     const ArrCurrency = [];
@@ -32,14 +34,17 @@ export const InputValue = ({ setCurrency }) => {
 
     function onChange(value) {
         setCurrency(value);
+        setValue(value)
     }
 
     return (
         <Select
             showSearch
+            value = {inputValue}
             style={{
                 width: 80,
                 margin: '0 8px',
+
             }}
             placeholder="Select a currency"
             optionFilterProp="children"

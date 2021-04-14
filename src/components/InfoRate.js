@@ -1,6 +1,4 @@
 import React, {useEffect} from 'react';
-import { Input } from 'antd';
-import {InputValue} from "./Input";
 import {useState} from "react";
 import {Demo} from "./InputSubmit"
 
@@ -8,13 +6,20 @@ import {Demo} from "./InputSubmit"
 
 
 export const InfoRate = () =>{
-    const [st1, setState1] = useState(null);
 
-    const [st2, setState2] = useState(null);
+    const [objectData, setObjectData] = useState({});
 
     const [result, setResult] = useState();
 
-    const GetRate  = `https://free.currconv.com/api/v7/convert?apiKey=do-not-use-this-key&q=${st1}_${st2}`
+    const st1 = objectData.price?.currency;
+
+    const st2 = objectData.price?.currency2;
+
+    const number = objectData.price?.number;
+
+    const GetRate  = `https://free.currconv.com/api/v7/convert?apiKey=do-not-use-this-key&q=${st1}_${st2}`;
+
+    const Output = (result * number)
 
     useEffect(
         () => {
@@ -31,16 +36,8 @@ export const InfoRate = () =>{
     return(
         <div>
             <div>
-                <p>Current Currency From {st1}</p>
-                <InputValue setCurrency = {setState1}/>
-            </div>
-            <div>
-                <p>Current Currency To { st2 }</p>
-                <InputValue setCurrency = {setState2}/>
-            </div>
-            <div>
-                <p>It`s Your Value</p>
-                <Demo/>
+                <p>It`s Your Value {Output}</p>
+                <Demo setObject = {setObjectData}/>
             </div>
         </div>
     )

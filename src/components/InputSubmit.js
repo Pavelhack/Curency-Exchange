@@ -9,15 +9,13 @@ const PriceInput = ({ value = {}, onChange }) => {
 
     const [currency, setCurrency] = useState('rmb');
 
-    const [currency2, setCurrency2] = useState('RMB');
+    const [currency2, setCurrency2] = useState("rmb");
 
     const [currencies, setCurrencies] = useState([]);
 
     const UrlCurrencies = "https://free.currconv.com/api/v7/currencies?apiKey=cc1c42623e7c44a5dccf"
 
     const ArrCurrency = [];
-
-    console.log(currency2)
 
     for (let i = 0; i < currencies.length - 1; i++) {
         ArrCurrency.push(<Option key={currencies[i]}>{currencies[i]}</Option>);
@@ -32,7 +30,6 @@ const PriceInput = ({ value = {}, onChange }) => {
                     for (let i in result.results) {
                         ArrCurrency.push(i)
                     }
-                    console.log(ArrCurrency)
                     setCurrencies(ArrCurrency);
                 })();
             }
@@ -74,6 +71,15 @@ const PriceInput = ({ value = {}, onChange }) => {
             currency: newCurrency,
         });
     };
+    const onCurrencyChange2 = (newCurrency) => {
+        if (!('currency2' in value)) {
+            setCurrency2(newCurrency);
+        }
+
+        triggerChange({
+            currency2: newCurrency,
+        });
+    };
 
     return (
         <span>
@@ -87,21 +93,28 @@ const PriceInput = ({ value = {}, onChange }) => {
               />
 
               <Select
+                  showSearch
                   value={value.currency || currency}
                   style={{ width: 80, margin: '0 8px' }}
                   onChange={onCurrencyChange}
               >
                    {ArrCurrency}
               </Select>
-
-              <InputValue setCurrency={setCurrency2}/>
+            <Select
+                  showSearch
+                  value={value.currency2 || currency2}
+                  style={{ width: 80, margin: '0 8px' }}
+                  onChange={onCurrencyChange2}
+              >
+                   {ArrCurrency}
+              </Select>
         </span>
     );
 };
 
-export const Demo = () => {
+export const Demo = ({setObject}) => {
     const onFinish = (values) => {
-        console.log('Received values from form: ', values);
+        setObject(values);
     };
 
     const checkPrice = (_, value) => {
@@ -120,7 +133,7 @@ export const Demo = () => {
             initialValues={{
                 price: {
                     number: 0,
-                    currency: 'rmb',
+                    currency: 'currency',
                 },
             }}
         >
