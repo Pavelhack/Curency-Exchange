@@ -36,6 +36,5 @@ return(
         </div>
         <InputValue setCurrency = {setCurrencyDefault}/>
     </div>
-
 );
 }
