@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Curency-Exchange/static/css/main.a0a5af3e.chunk.css",
+    "main.js": "/Curency-Exchange/static/js/main.ff830abd.chunk.js",
+    "main.js.map": "/Curency-Exchange/static/js/main.ff830abd.chunk.js.map",
+    "runtime-main.js": "/Curency-Exchange/static/js/runtime-main.438f1b56.js",
+    "runtime-main.js.map": "/Curency-Exchange/static/js/runtime-main.438f1b56.js.map",
+    "static/css/2.a5497ee8.chunk.css": "/Curency-Exchange/static/css/2.a5497ee8.chunk.css",
+    "static/js/2.5d6ae02c.chunk.js": "/Curency-Exchange/static/js/2.5d6ae02c.chunk.js",
+    "static/js/2.5d6ae02c.chunk.js.map": "/Curency-Exchange/static/js/2.5d6ae02c.chunk.js.map",
+    "index.html": "/Curency-Exchange/index.html",
+    "static/css/2.a5497ee8.chunk.css.map": "/Curency-Exchange/static/css/2.a5497ee8.chunk.css.map",
+    "static/css/main.a0a5af3e.chunk.css.map": "/Curency-Exchange/static/css/main.a0a5af3e.chunk.css.map",
+    "static/js/2.5d6ae02c.chunk.js.LICENSE.txt": "/Curency-Exchange/static/js/2.5d6ae02c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.438f1b56.js",
+    "static/css/2.a5497ee8.chunk.css",
+    "static/js/2.5d6ae02c.chunk.js",
+    "static/css/main.a0a5af3e.chunk.css",
+    "static/js/main.ff830abd.chunk.js"
+  ]
+}
